@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Slope Intercept Finder</title>
+            <link rel="icon" type="image/x-icon" href="icon/favicon1.png">
+            <style>
+                .inputbox {
+                    width: 50px;
+                }
+            </style>
+        </head>
+        <body>
+            <script>
+                function getTheNumberAndThenAnswer() {
+                    var x = document.getElementById("x").value;
+                    var x1 = document.getElementById("x1").value;
+                    var y = document.getElementById("y").value;
+                    var y1 = document.getElementById("y1").value;
+                    var ymxb1 = (x1 - x); 
+                    var ymxb2 = (y1 - y);
+                    var ymxb3 = ymxb2 / ymxb1;
+                    var b = y - (ymxb3 * x);
+                    var yint = "(0," + b + ")";
+                    var xint = "(" + (-b/ymxb3) + ",0)";
+                    document.getElementById("input").innerHTML =  "(" + x + "," + y + ")" + " (" + x1 + "," + y1 + ")";
+                    document.getElementById("output").innerHTML = "y = " + ymxb3 + "x" + " + " + b;
+                    document.getElementById("slope").innerHTML =  ymxb3;
+                    document.getElementById("yint").innerHTML =  yint;
+                    document.getElementById("xint").innerHTML =  xint;
+                }
+            </script>
+            Coordinate A:<input id="x" type="number" class="inputbox">,<input id="y" type="number" class="inputbox">
+            <br>Coordinate B:<input id="x1" type="number" class="inputbox">,<input id="y1" type="number" class="inputbox">
+            <input type="button" onclick="getTheNumberAndThenAnswer()" value="enter">
+            <br>You inputted:<div id="input"></div>
+            y = mx + b form:<div id="output"></div>
+            slope:<div id="slope"></div>
+            y-int:<div id="yint"></div>
+            x-int:<div id="xint"></div>
+        </body>
+    </html>
