@@ -1,41 +1,101 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Slope Intercept Finder</title>
-            <link rel="icon" type="image/x-icon" href="icon/favicon1.png">
-            <style>
-                .inputbox {
-                    width: 50px;
+<html>
+    <head>
+        <title>Slope Intercept Finder</title>
+        <link rel="icon" type="image/x-icon" href="icon/favicon1.png">
+        <style>
+            .inputbox {
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function getTheNumberAndThenAnswer() {
+                var x = document.getElementById("x").value;
+                var x1 = document.getElementById("x1").value;
+                var y = document.getElementById("y").value;
+                var y1 = document.getElementById("y1").value;
+                var ymxb1 = (x1 - x); 
+                var ymxb2 = (y1 - y);
+                var ymxb3 = ymxb2 / ymxb1;
+                var b = y - (ymxb3 * x);
+                var yint = "(0," + b + ")";
+                var xint = "(" + (-b/ymxb3) + ",0)";
+                var yb = " + " + b;
+                var m = ymxb3;
+                document.getElementById("input").innerHTML = "(" + x + "," + y + ")" + " (" + x1 + "," + y1 + ")";
+                document.getElementById("output").innerHTML = "y = " + ymxb3 + "x" + yb;
+                document.getElementById("slope").innerHTML = ymxb3;
+                document.getElementById("yint").innerHTML = yint;
+                document.getElementById("xint").innerHTML = xint;
+                if (b == 0) {
+                    yb = "";
+                    document.getElementById("output").innerHTML = "y = " + ymxb3 + "x" + yb;
                 }
-            </style>
-        </head>
-        <body>
-            <script>
-                function getTheNumberAndThenAnswer() {
-                    var x = document.getElementById("x").value;
-                    var x1 = document.getElementById("x1").value;
-                    var y = document.getElementById("y").value;
-                    var y1 = document.getElementById("y1").value;
-                    var ymxb1 = (x1 - x); 
-                    var ymxb2 = (y1 - y);
-                    var ymxb3 = ymxb2 / ymxb1;
-                    var b = y - (ymxb3 * x);
-                    var yint = "(0," + b + ")";
-                    var xint = "(" + (-b/ymxb3) + ",0)";
-                    document.getElementById("input").innerHTML =  "(" + x + "," + y + ")" + " (" + x1 + "," + y1 + ")";
-                    document.getElementById("output").innerHTML = "y = " + ymxb3 + "x" + " + " + b;
-                    document.getElementById("slope").innerHTML =  ymxb3;
-                    document.getElementById("yint").innerHTML =  yint;
-                    document.getElementById("xint").innerHTML =  xint;
+                if (ymxb3 == 1) {
+                    m = "";
+                    document.getElementById("output").innerHTML = "y = " + m + "x" + yb;
                 }
-            </script>
-            Coordinate A:<input id="x" type="number" class="inputbox">,<input id="y" type="number" class="inputbox">
-            <br>Coordinate B:<input id="x1" type="number" class="inputbox">,<input id="y1" type="number" class="inputbox">
-            <input type="button" onclick="getTheNumberAndThenAnswer()" value="enter">
-            <br>You inputted:<div id="input"></div>
-            y = mx + b form:<div id="output"></div>
-            slope:<div id="slope"></div>
-            y-int:<div id="yint"></div>
-            x-int:<div id="xint"></div>
-        </body>
-    </html>
+                if (ymxb3 == -1) {
+                    m = "-";
+                    document.getElementById("output").innerHTML = "y = " + m + "x" + yb;
+                }
+                if (b < 0) {
+                    yb = " - " + -b;
+                    document.getElementById("output").innerHTML = "y = " + m + "x" + yb;
+                }
+            }
+            
+            function getTheAltNumberAndThenAnswer() {
+                var x2 = document.getElementById("x2").value;
+                var y2 = document.getElementById("y2").value;
+                var m2 = document.getElementById("slopeinput").value;
+                var xm2 = m2 * x2;
+                var b2 = y2 - xm2;
+                var yb2 = " + " + b2;
+                var yint2 = "(0," + b2 + ")";
+                var xint2 = "(" + (-b2/m2) + ",0)";
+                document.getElementById("output2").innerHTML = "y = " + m2 + "x" + yb2;
+                document.getElementById("input2").innerHTML = "(" + x2 + "," + y2 + "), " + "m = " + m2;
+                document.getElementById("yint2").innerHTML = yint2;
+                document.getElementById("xint2").innerHTML = xint2;
+                
+                if (b2 == 0) {
+                    yb2 = "";
+                    document.getElementById("output2").innerHTML = "y = " + m2 + "x" + yb2;
+                }
+                if (m2 == 1) {
+                    m2 = "";
+                    document.getElementById("output2").innerHTML = "y = " + m2 + "x" + yb2;
+                }
+                if (m2 == -1) {
+                    m2 = "-";
+                    document.getElementById("output2").innerHTML = "y = " + m2 + "x" + yb2;
+                }
+                if (b2 < 0) {
+                    yb2 = " - " + -b2;
+                    document.getElementById("output2").innerHTML = "y = " + m2 + "x" + yb2;
+                }
+                
+            }
+        </script>
+        Coordinate A:<input id="x" type="number" class="inputbox">,<input id="y" type="number" class="inputbox">
+        <br>Coordinate B:<input id="x1" type="number" class="inputbox">,<input id="y1" type="number" class="inputbox">
+        <input type="button" onclick="getTheNumberAndThenAnswer()" value="enter">
+        <br>You inputted:<div id="input"></div>
+        y = mx + b form:<div id="output"></div>
+        slope:<div id="slope"></div>
+        y-int:<div id="yint"></div>
+        x-int:<div id="xint"></div>
+        
+        <br><br><br><br><br><br>
+        
+        Coordinate C:<input type="number" id="x2" class="inputbox">,<input type="number" id="y2" class="inputbox"><br>
+        Slope:<input id="slopeinput" class="inputbox"> <input type="button" onclick="getTheAltNumberAndThenAnswer()" value="enter"><br>
+        You inputted:<div id="input2"></div>
+        y = mx + b form:<div id="output2"></div>
+        y-int:<div id="yint2"></div>
+        x-int:<div id="xint2"></div>
+    </body>
+</html>
